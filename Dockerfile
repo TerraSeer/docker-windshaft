@@ -46,3 +46,11 @@ WORKDIR /docker
 
 # install windshaft
 RUN npm install windshaft@0.42.2
+
+# install testing dependencies
+WORKDIR /docker/node_modules/windshaft
+RUN npm install istanbul@0.3.6 jshint@2.6.0 mocha@1.21.4 redis@0.8.3
+RUN apt-get install -qq imagemagick
+
+# test windshaft
+CMD npm test
