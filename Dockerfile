@@ -48,9 +48,10 @@ WORKDIR /docker
 RUN npm install windshaft@0.42.2
 
 # install testing dependencies
-WORKDIR /docker/node_modules/windshaft
-RUN npm install istanbul@0.3.6 jshint@2.6.0 mocha@1.21.4 redis@0.8.3
 RUN apt-get install -qq imagemagick
+WORKDIR /docker/node_modules/windshaft
+# install devDependencies without installing each dependency's devDependencies
+RUN npm install $(node -e "var d = require('./package.json').devDependencies; for (var key in d)  { console.log(key + '@' + d[key]) }")
 
 # test windshaft
 CMD npm test
