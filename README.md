@@ -13,10 +13,10 @@ A Docker image with Windshaft and its dependencies preinstalled.
     cd docker-windshaft
     ```
 
-4. Build the image.
+4. Build and start the services.
 
     ``` shell
-    docker build .
+    docker-compose build && docker-compose up
     ```
 
 ## Usage
