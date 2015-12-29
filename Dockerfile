@@ -23,7 +23,10 @@ RUN apt-get install -qq \
   libgif-dev \
   libjpeg8-dev \
   libjpeg8-dev \
+#  libmapnik2-2.0 \
+#  libmapnik2-dev \
   libpango1.0-dev \
+#  mapnik-utils \
   pkg-config
 
 # install postgresql
@@ -41,15 +44,22 @@ RUN curl -sL https://deb.nodesource.com/setup | bash
 RUN apt-get install -qq nodejs
 
 # create directory for docker
-RUN mkdir /docker
+RUN mkdir -p /docker/node_modules/
 WORKDIR /docker
 
 # install windshaft
-RUN npm install windshaft@0.42.2
+RUN curl -LO https://github.com/CartoDB/Windshaft/archive/0.19.4.tar.gz
+RUN tar -xvf 0.19.4.tar.gz
+RUN rm -rf 0.19.4.tar.gz
+RUN mv Windshaft-0.19.4 node_modules/windshaft
+
+# add custom package.json
+WORKDIR node_modules/windshaft
+ADD package.json .
+RUN npm install
 
 # install testing dependencies
 RUN apt-get install -qq imagemagick
-WORKDIR /docker/node_modules/windshaft
 # install devDependencies without installing each dependency's devDependencies
 RUN npm install $(node -e "var d = require('./package.json').devDependencies; for (var key in d)  { console.log(key + '@' + d[key]) }")
 
