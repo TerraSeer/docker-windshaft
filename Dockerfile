@@ -18,10 +18,7 @@ RUN apt-get install -qq \
 # install windshaft dependencies
 RUN apt-get install -qq \
   libcairo2-dev \
-  libcairo2-dev \
   libgif-dev \
-  libgif-dev \
-  libjpeg8-dev \
   libjpeg8-dev \
 #  libmapnik2-2.0 \
 #  libmapnik2-dev \
