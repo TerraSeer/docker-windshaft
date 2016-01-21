@@ -39,6 +39,7 @@ RUN apt-get install -qq redis-server
 # install node
 RUN curl -sL https://deb.nodesource.com/setup | bash
 RUN apt-get install -qq nodejs
+RUN npm -g install npm@latest-2
 
 # create directory for docker
 RUN mkdir -p /docker/node_modules/
@@ -52,7 +53,7 @@ RUN mv Windshaft-0.19.4 node_modules/windshaft
 
 # add custom package.json
 WORKDIR node_modules/windshaft
-ADD package.json .
+ADD package.json ./
 RUN npm install
 
 # install testing dependencies
