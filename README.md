@@ -24,13 +24,13 @@ A Docker image with Windshaft and its dependencies preinstalled.
 Use this as a base Docker image using the [`FROM`](https://docs.docker.com/reference/builder/#from) instruction.
 
 ``` dockerfile
-FROM christianbundy/windshaft:latest
+FROM terraseer/windshaft:latest
 ```
 
 You can also choose a [prebuilt tag](https://registry.hub.docker.com/u/christianbundy/windshaft/tags/manage/).
 
 ``` dockerfile
-FROM christianbundy/windshaft:0.42.1
+FROM terraseer/windshaft:0.19.4
 ```
 
 ## Support
