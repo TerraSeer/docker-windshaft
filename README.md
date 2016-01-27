@@ -16,7 +16,7 @@ A Docker image with Windshaft and its dependencies preinstalled.
 4. Build and start the services.
 
     ``` shell
-    docker-compose build && docker-compose up
+    docker build .
     ```
 
 ## Usage
